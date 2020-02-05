@@ -31,7 +31,7 @@ MotoRepository motoRepository;
         return motoRepository.findById(id).flatMap(oldMoto -> {
             oldMoto.setBrand(moto.getBrand());
             oldMoto.setEngineVolume(moto.getEngineVolume());
-            oldMoto.setEngineVolume(moto.getEngineVolume());
+            oldMoto.setYear(moto.getYear());
             return motoRepository.save(oldMoto);
         });
     }
