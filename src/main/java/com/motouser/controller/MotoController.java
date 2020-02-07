@@ -26,8 +26,8 @@ MotoRepository motoRepository;
 }
 
 
-@PutMapping("{Id}")
-    public Mono<Moto> outMoto (@PathVariable String id, @RequestBody Moto moto) {
+@PutMapping("/{id}")
+    public Mono<Moto> putMoto (@PathVariable String id, @RequestBody Moto moto) {
         return motoRepository.findById(id).flatMap(oldMoto -> {
             oldMoto.setBrand(moto.getBrand());
             oldMoto.setEngineVolume(moto.getEngineVolume());
@@ -37,7 +37,13 @@ MotoRepository motoRepository;
     }
 
     @DeleteMapping("/{motoId}")
-    public Mono<String> deleteArtist(@PathVariable String motoId) {
+    public Mono<String> deleteMoto(@PathVariable String motoId) {
         return motoRepository.findById(motoId).flatMap(moto -> motoRepository.delete(moto)).then(Mono.just("Deleted"));
+    }
+
+    @DeleteMapping
+    public void delAll () {
+        motoRepository.deleteAll();
+        System.out.println("All motos were deleted!");
     }
 }

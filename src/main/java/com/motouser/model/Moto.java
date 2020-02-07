@@ -13,12 +13,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Moto {
 
     @Id
-    private int motoId;
+    private String id;
     public String brand;
     public int year;
     public int engineVolume;
     public String idDriver;
 
 }
-
-// создать гет пут пост дел для драйвера и для мото
